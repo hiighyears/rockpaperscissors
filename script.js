@@ -80,15 +80,15 @@ switch (prompt("rock paper or scissors").toLowerCase()) {
 
 
 function play_game(){
-    // if (count=0;count<5;count++;) {
+    for (count=0;count<5;count++) {
         play_round();
-    // }
+    }
     if (user_score > comp_score) {
-        console.log("YOU WIN")
+        console.log(`YOUR SCORE IS ${user_score} AND COMP SCORE IS ${comp_score}...YOU WIN` )
     }else if (user_score < comp_score) {
-        console.log("YOU LOSE")}
+        console.log(`YOUR SCORE IS ${user_score} AND COMP SCORE IS ${comp_score}...YOU LOSE`)}
     else
-        {console.log("TIE")}
+        {console.log(`YOUR SCORE IS ${user_score} AND COMP SCORE IS ${comp_score}...TIE`)}
 }
 
 play_game();
