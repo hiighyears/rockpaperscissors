@@ -3,60 +3,57 @@ let choice = Math.random();
 // console.log(choice);
 if (choice <= .33) 
     return choice = "rock"
- else if (choice <= .63) 
+ else if (choice <= .66) 
     return choice = "paper"
  else
-    return choice = "scissor"
+    return choice = "scissors"
 }
 
 let comp_score = 0;
 let user_score = 0;
-let comp_choice = getComputerChoice();
 
 function rps(user_choice){
     let comp_choice = getComputerChoice();
-
-    switch (user_choice=="rock") {
-            case (comp_choice == "scissors"):
+    console.log(comp_choice)
+    if (user_choice=="rock"){
+    switch (comp_choice) {
+            case "scissors":
                 console.log("COMPUTER CHOSE SCISSORS...YOU WIN THIS ROUND")
-                user_score +=1;
+             return   user_score +=1;
             
-            break;
-            case  (comp_choice == "paper"):
+            case  "paper":
                 console.log("COMPUTER CHOSE PAPER ...YOU LOSE THIS ROUND")
-                comp_score +=1;
-            break;
+            return   comp_score +=1;
         default:
-            console.log("YOU BOTH CHOSE..TIE");
-    }
-
-    switch (user_choice=="paper") {
-        case (comp_choice == "rock"):
-            console.log("COMPUTER CHOSE SCISSORS...YOU WIN THIS ROUND")
-            user_score +=1;
+            console.log("YOU BOTH CHOSE SAME..TIE");
+            break;
+    }}
+ else if (user_choice=="paper"){
+    switch (comp_choice) {
+        case "rock":
+            console.log("COMPUTER CHOSE ROCK...YOU WIN THIS ROUND")
+        return   user_score +=1;
         
-        break;
-        case  (comp_choice == "scissors"):
-            console.log("COMPUTER CHOSE PAPER ...YOU LOSE THIS ROUND")
-            comp_score +=1;
-        break;
-    default:
-        console.log("YOU BOTH CHOSE..TIE");
-}
+        case   "scissors":
+            console.log("COMPUTER CHOSE SCISSORS ...YOU LOSE THIS ROUND")
+        return    comp_score +=1;
 
-    switch (user_choice=="scissors") {
-        case (comp_choice == "paper"):
-            console.log("COMPUTER CHOSE SCISSORS...YOU WIN THIS ROUND")
-            user_score +=1;
-        
-        break;
-        case  (comp_choice == "rock"):
-            console.log("COMPUTER CHOSE PAPER ...YOU LOSE THIS ROUND")
-            comp_score +=1;
-        break;
     default:
-        console.log("YOU BOTH CHOSE..TIE");
-    }
+        console.log("YOU BOTH CHOSE SAME..TIE");
+        break
+}}
+else {
+    switch (comp_choice) {
+        case "paper":
+            console.log("COMPUTER CHOSE PAPER...YOU WIN THIS ROUND")
+         return   user_score +=1;
+        case  "rock":
+            console.log("COMPUTER CHOSE ROCK ...YOU LOSE THIS ROUND")
+        return   comp_score +=1;
+    default:
+        console.log("YOU BOTH CHOSE SAME..TIE");
+        break;
+    }}
 
 
 }
@@ -64,18 +61,16 @@ function rps(user_choice){
 function play_round(){
 switch (prompt("rock paper or scissors").toLowerCase()) {
     case "rock":
-        rps("rock")
+        rps("rock");
 
         break;
     case "paper":
-        rps("paper")
+        rps("paper");
 
 
         break;
-    case "scissor":
-        rps("scissors")
-
-
+    case "scissors":
+        rps("scissors");
 
         break;
     default:
@@ -85,15 +80,15 @@ switch (prompt("rock paper or scissors").toLowerCase()) {
 
 
 function play_game(){
-    if (count=0,count<5,count++) {
+    // if (count=0;count<5;count++;) {
         play_round();
-    }
+    // }
     if (user_score > comp_score) {
         console.log("YOU WIN")
     }else if (user_score < comp_score) {
         console.log("YOU LOSE")}
     else
-        console.log("TIE")
+        {console.log("TIE")}
 }
 
 play_game();
