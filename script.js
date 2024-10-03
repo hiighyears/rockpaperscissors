@@ -14,7 +14,7 @@ let user_score = 0;
 
 function rps(user_choice){
     let comp_choice = getComputerChoice();
-    console.log(comp_choice)
+    // console.log(comp_choice)
     if (user_choice=="rock"){
     switch (comp_choice) {
             case "scissors":
