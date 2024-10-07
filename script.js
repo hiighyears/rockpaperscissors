@@ -18,77 +18,117 @@ function rps(user_choice){
     if (user_choice=="rock"){
     switch (comp_choice) {
             case "scissors":
-                console.log("COMPUTER CHOSE SCISSORS...YOU WIN THIS ROUND")
-             return   user_score +=1;
+                record.textContent = "COMPUTER CHOSE SCISSORS...YOU WIN THIS ROUND"
+                user_score +=1;
+                break;
+
             
             case  "paper":
-                console.log("COMPUTER CHOSE PAPER ...YOU LOSE THIS ROUND")
-            return   comp_score +=1;
+                record.textContent= "COMPUTER CHOSE PAPER ...YOU LOSE THIS ROUND"
+            
+                comp_score +=1;
+                break;
         default:
-            console.log("YOU BOTH CHOSE SAME..TIE");
+            record.textContent ="YOU BOTH CHOSE SAME..TIE"
             break;
     }}
  else if (user_choice=="paper"){
     switch (comp_choice) {
         case "rock":
-            console.log("COMPUTER CHOSE ROCK...YOU WIN THIS ROUND")
-        return   user_score +=1;
+            record.textContent="COMPUTER CHOSE ROCK...YOU WIN THIS ROUND"
+           user_score +=1;
+           break;
         
         case   "scissors":
-            console.log("COMPUTER CHOSE SCISSORS ...YOU LOSE THIS ROUND")
-        return    comp_score +=1;
+            record.textContent="COMPUTER CHOSE SCISSORS ...YOU LOSE THIS ROUND"
+            comp_score +=1;
+            break;
 
     default:
-        console.log("YOU BOTH CHOSE SAME..TIE");
+        record.textContent="YOU BOTH CHOSE SAME..TIE"
         break
 }}
 else {
     switch (comp_choice) {
         case "paper":
-            console.log("COMPUTER CHOSE PAPER...YOU WIN THIS ROUND")
-         return   user_score +=1;
+            record.textContent="COMPUTER CHOSE PAPER...YOU WIN THIS ROUND"
+            user_score +=1;
+            break;
         case  "rock":
-            console.log("COMPUTER CHOSE ROCK ...YOU LOSE THIS ROUND")
-        return   comp_score +=1;
+            record.textContent="COMPUTER CHOSE ROCK ...YOU LOSE THIS ROUND"
+           comp_score +=1;
+           break;
     default:
-        console.log("YOU BOTH CHOSE SAME..TIE");
+        record.textContent="YOU BOTH CHOSE SAME..TIE";
         break;
     }}
 
 
-}
-
-function play_round(){
-switch (prompt("rock paper or scissors").toLowerCase()) {
-    case "rock":
-        rps("rock");
-
-        break;
-    case "paper":
-        rps("paper");
-
-
-        break;
-    case "scissors":
-        rps("scissors");
-
-        break;
-    default:
-        console.log("you entered the wrong statement")
-        break;
-}}
-
-
-function play_game(){
-    for (count=0;count<5;count++) {
-        play_round();
+    scoreBoard.textContent = `USER SCORE:${user_score} COMP SCORE:${comp_score}`;
+    if(user_score>=5||comp_score>=5){
+        check_score();
+        
     }
-    if (user_score > comp_score) {
-        console.log(`YOUR SCORE IS ${user_score} AND COMP SCORE IS ${comp_score}...YOU WIN` )
-    }else if (user_score < comp_score) {
-        console.log(`YOUR SCORE IS ${user_score} AND COMP SCORE IS ${comp_score}...YOU LOSE`)}
-    else
-        {console.log(`YOUR SCORE IS ${user_score} AND COMP SCORE IS ${comp_score}...TIE`)}
+
 }
 
-play_game();
+
+
+// function play_round(){
+
+// switch (prompt("rock paper or scissors").toLowerCase()) {
+//     case "rock":
+//         rps("rock");
+
+//         break;
+//     case "paper":
+//         rps("paper");
+
+
+//         break;
+//     case "scissors":
+//         rps("scissors");
+
+//         break;
+//     default:
+//         console.log("you entered the wrong statement")
+//         break;
+// }}
+
+const btn = document.querySelectorAll("button");
+btn.forEach((button) => {
+    button.addEventListener("click", () => {
+        rps(button.id);
+      })
+});
+
+const scoreBoard =  document.createElement("div");
+scoreBoard.textContent = `USER SCORE:${user_score} COMP SCORE:${comp_score}`;
+scoreBoard.style.padding = "30px 0px";
+const record =  document.createElement("div");
+record.style.padding = "30px 0px";
+
+const body = document.querySelector("body"); // Or any other element where you want to append the scoreboard
+body.appendChild(scoreBoard);
+body.appendChild(record);
+
+
+
+function check_score(){
+    
+    if (user_score > comp_score) {
+        scoreBoard.textContent =`YOUR SCORE IS ${user_score} AND COMP SCORE IS ${comp_score}...YOU WIN` 
+    }else if (user_score < comp_score) {
+        scoreBoard.textContent =`YOUR SCORE IS ${user_score} AND COMP SCORE IS ${comp_score}...YOU LOSE`}
+    else
+    scoreBoard.textContent =`YOUR SCORE IS ${user_score} AND COMP SCORE IS ${comp_score}...TIE`
+    comp_score = 0;
+     user_score = 0;
+     record.textContent="   Choose rock paper and scissors to play a new game"
+
+}
+        
+
+
+
+
