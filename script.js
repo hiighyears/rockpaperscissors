@@ -111,7 +111,8 @@ record.style.padding = "30px 0px";
 const body = document.querySelector("body"); // Or any other element where you want to append the scoreboard
 body.appendChild(scoreBoard);
 body.appendChild(record);
-
+body.appendChild(scoreBoard);
+body.appendChild(record);
 
 
 function check_score(){
